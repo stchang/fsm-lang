@@ -1,11 +1,3 @@
-# fsm-lang
-
-(Work in progress)
-
-This package adds convenient #langs for the [`fsm`](https://github.com/morazanm/fsm) library.
-
-Example:
-```racket
 #lang fsm/dfa
 
 #:states (Q1 Q2)
@@ -20,5 +12,3 @@ Example:
 #:start-state Q1
 
 #:accept-states (Q1)
-```
-
