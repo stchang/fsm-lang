@@ -8,6 +8,8 @@ Example:
 ```racket
 #lang fsm/dfa
 
+;; figure 1.9 from Sipser
+
 #:states (Q1 Q2)
 
 #:alphabet (0 1)
