@@ -1,24 +1,11 @@
 #lang racket
 (provide (rename-out [nfa-begin #%module-begin])
          unquote EMP)
-         ;; (for-syntax (rename-out [epsilon EPS]
-         ;;                         [epsilon ε])))
          
-(require (for-syntax #;(for-syntax racket/base
-                                 syntax/parse)
-                     syntax/parse)
+(require (for-syntax syntax/parse)
          racket/stxparam
          fsm/nogui
          fsm/utils)
-
-;; when used outside nfa def, treat as empty string
-(define-syntax-parameter epsilon
-  (syntax-parser
-    #'null))
-#;(begin-for-syntax
-  (define-syntax epsilon
-    (syntax-parser
-      [:id #'(unquote EPS)])))
 
 (define-syntax nfa-begin
   (syntax-parser
