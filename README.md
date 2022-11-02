@@ -22,3 +22,30 @@ Example:
 #:accept-states (Q1)
 ```
 
+This defines a machine of the specified type (e.g., DFA).
+
+It can then be either:
+
+1) run from the command line (as a Racket program), with an input string (quotes are optional, except for empty string):
+```racket
+$ racket fig1.9dfa.rkt
+DFA: expects 1 <input> on the command line, given 0 arguments
+$ racket fig1.9dfa.rkt ""
+accept
+$ racket fig1.9dfa.rkt "10"
+accept
+$ racket fig1.9dfa.rkt "11"
+reject
+```
+
+or 2) imported as a library (where the machine is named `M` by default) to be used with the main `fsm` library:
+```racket
+#lang racket/base
+
+(require fsm)
+
+;; figure 1.9 from Sipser: M3
+(require (rename-in "fig1.9dfa.rkt" [M M3]))
+(sm-apply M3 (input->list "110")) ; => 'accept
+
+```
