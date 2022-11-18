@@ -1,5 +1,5 @@
 #lang racket/base
 
-(require fsm/fsm-main)
+(require fsm/fsm-core/interface)
 
-(provide (all-from-out fsm/fsm-main))
+(provide (all-from-out fsm/fsm-core/interface))
