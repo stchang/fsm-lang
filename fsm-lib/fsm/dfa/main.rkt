@@ -1,9 +1,11 @@
 #lang racket
-(provide (rename-out [dfa-begin #%module-begin]))
+(provide (rename-out [dfa-begin #%module-begin])
+         (all-from-out fsm/reprovides))
 
 (require (for-syntax syntax/parse)
          fsm/nogui
-         fsm/utils)
+         fsm/utils
+         fsm/reprovides)
 
 (define-syntax dfa-begin
   (syntax-parser
@@ -16,7 +18,7 @@
      #'(#%module-begin
         (provide M)
         (define M
-          (make-dfa 'Q 'Sigma 'q1 'F 'delta))
+          (make-dfa `Q 'Sigma 'q1 'F `delta))
         (module+ main
           (command-line
            #:program "DFA"

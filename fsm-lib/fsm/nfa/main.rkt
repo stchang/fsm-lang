@@ -1,11 +1,11 @@
 #lang racket
 (provide (rename-out [nfa-begin #%module-begin])
-         unquote EMP)
+         (all-from-out fsm/reprovides))
          
 (require (for-syntax syntax/parse)
-         racket/stxparam
          fsm/nogui
-         fsm/utils)
+         fsm/utils
+         fsm/reprovides)
 
 (define-syntax nfa-begin
   (syntax-parser
@@ -18,7 +18,7 @@
      #'(#%module-begin
         (provide M)
         (define M
-          (make-ndfa 'Q 'Sigma 'q1 'F `delta)) ; quasiquote, to allow EPS
+          (make-ndfa `Q 'Sigma 'q1 'F `delta)) ; quasiquote, to allow EPS
         (module+ main
           (command-line
            #:program "NFA"
